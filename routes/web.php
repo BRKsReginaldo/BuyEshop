@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+});
+
+Route::redirect('/', '/app');
+
+Route::group(['prefix' => 'app'], function() {
+    Route::view('/{path?}', 'app')->where('path', '.*');
 });

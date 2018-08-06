@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include mobileResponsive(tabletSm) {
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom: 1px solid $light-gray;
+  }
+}
+
+.navbar__categories {
+  width: 100%;
+  background: $light-gray;
+  font-size: 20px;
+
+  @include mobileResponsive(tabletSm) {
+    display: inline-block;
+    background: #fff;
+    width: auto;
+  }
+}
+
+.navbar__categories-trigger {
+  text-align: center;
+  padding: 10px;
+  font-weight: 500;
+
+  @include mobileResponsive(tabletSm) {
+    display: none;
+  }
+}
+
+.navbar__categories .categories {
+  display: none;
+}
+
+.navbar__categories .categories.active {
+  display: block;
+
+  @include mobileResponsive(tabletSm) {
+    display: flex;
+  }
+}

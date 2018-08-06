@@ -30,17 +30,17 @@ class ProductQuery extends Query
                 'type' => Type::int()
             ],
             'category' => [
-                'type' => Type::int()
+                'type' => Type::id()
             ]
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        $query = Product::newQuery();
+        $query = resolve(Product::class)->newQuery();
 
         if (isset($args['category'])) {
-            $query->where('category_id', $args['category_id']);
+            $query->where('category_id', $args['category']);
         }
 
         return $query->paginate($args['limit'] ?? 10, ['*'], 'page', $args['page'] ?? 0);

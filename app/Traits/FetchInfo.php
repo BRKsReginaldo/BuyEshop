@@ -11,13 +11,8 @@ trait FetchInfo
     protected static function bootFetchInfo()
     {
         $fillValues = function (Model $model) {
-            $host = parse_url($model->link)['host'];
-
-            if (!isset(config('fetchers.hosts')[$host])) {
-                return false;
-            }
-
-            $fetcher = resolve(config('fetchers.hosts')[$host]);
+            $host = $model->getHost();
+            $fetcher = $model->getResolver();
 
             collect($fetcher->get($model->link))
                 ->each(function ($value, $key) use ($model) {
@@ -30,5 +25,21 @@ trait FetchInfo
         static::creating($fillValues);
 
         static::updating($fillValues);
+    }
+
+    public function getHost()
+    {
+        return parse_url($this->link)['host'];
+    }
+
+    public function getResolver()
+    {
+        $host = $this->getHost();
+
+        if (!isset(config('fetchers.hosts')[$host])) {
+            return false;
+        }
+
+        return resolve(config('fetchers.hosts')[$host]);
     }
 }

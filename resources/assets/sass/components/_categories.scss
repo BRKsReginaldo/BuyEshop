@@ -1,0 +1,15 @@
+.categories {
+  padding: 10px;
+
+  @include mobileResponsive(tabletSm) {
+    border-bottom: 1px solid rgba(darken($light-gray, 25%), .5);
+    padding: 0 10px;
+  }
+}
+
+//.navbar__categories .categories {
+//  @include mobileResponsive(tabletSm) {
+//    display: flex;
+//  }
+//}
+//

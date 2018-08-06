@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Contracts\Priceable;
 use App\Scopes\UserScope;
 use App\Traits\FetchInfo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class Product extends Model
+class Product extends Model implements Priceable
 {
     use SoftDeletes, FetchInfo;
 
@@ -31,11 +32,17 @@ class Product extends Model
 
     public function provider()
     {
-        return $this->belongsTo(ProviderType::class);
+        return $this->belongsTo(ProviderType::class, 'provider_type_id');
     }
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getCacheKey($append = '', $prepend = '@')
+    {
+        $id = $this->getKey();
+        return "{$prepend}product-{$id}{$append}";
     }
 }

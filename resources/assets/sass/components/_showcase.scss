@@ -1,0 +1,25 @@
+.showcase {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.showcase__product {
+
+  @include mobileResponsive(mobileMd) {
+    flex-basis: 45%;
+    margin: 5px 5px;
+  }
+
+  @include mobileResponsive(tabletSm) {
+    flex-basis: 32%;
+    margin: 5px 5px;
+  }
+
+  @include mobileResponsive(tabletLg) {
+    flex-basis: 24%;
+    margin: 5px 5px;
+  }
+
+}

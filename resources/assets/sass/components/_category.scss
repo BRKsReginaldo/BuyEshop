@@ -1,0 +1,20 @@
+.category {
+  padding: 10px;
+  color: #222;
+  border-bottom: 1px solid rgba(darken($light-gray, 25%), .5);
+  transition: background-color .4s;
+  will-change: background-color;
+  display: block;
+  text-decoration: none;
+  margin: 0 5px;
+
+  @include mobileResponsive(tabletSm) {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: none;
+  }
+}
+
+.category:hover, .category.active {
+  background-color: darken($light-gray, 10%);
+}

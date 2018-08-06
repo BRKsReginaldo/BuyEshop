@@ -125,6 +125,9 @@ return [
         'default' => [
             'query' => [
                 'products' => \App\GraphQL\Query\ProductQuery::class,
+                'category' => \App\GraphQL\Query\CategoryQuery::class,
+                'categories' => \App\GraphQL\Query\CategoriesQuery::class,
+                'highlight' => \App\GraphQL\Query\HighlightQuery::class,
             ],
             'mutation' => [
 
@@ -182,6 +185,7 @@ return [
      */
     'types' => [
         'Product' => App\GraphQL\Type\ProductType::class,
+        'Category' => \App\GraphQL\Type\CategoryType::class,
     ],
 
     /*

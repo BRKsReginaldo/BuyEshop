@@ -1,0 +1,59 @@
+query getProducts(
+$page: Int,
+$limit: Int,
+$category_id: ID
+) {
+    products(
+        page: $page,
+        limit: $limit,
+        category: $category_id
+    ) {
+        items {
+            id,
+            link,
+            logo,
+            price,
+            title,
+            short_description
+            __typename
+        }
+        cursor {
+            total,
+            currentPage,
+            hasPages,
+            perPage
+            __typename
+        }
+
+        __typename
+    }
+}
+
+query getHighlight(
+$page: Int,
+$limit: Int
+) {
+    highlight(
+        page: $page,
+        limit: $limit
+    ) {
+        items {
+            id,
+            link,
+            logo,
+            price,
+            title,
+            short_description
+            __typename
+        }
+        cursor {
+            total,
+            currentPage,
+            hasPages,
+            perPage
+            __typename
+        }
+
+        __typename
+    }
+}

@@ -1,0 +1,1 @@
+export const hasMorePages = (currentPage, perPage, total) => (currentPage * perPage) < total

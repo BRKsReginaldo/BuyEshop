@@ -1,0 +1,17 @@
+query getCategories {
+    categories {
+        id,
+        name,
+        slug
+    }
+}
+
+query getCategory(
+$slug: String!
+) {
+    category(slug: $slug) {
+        id,
+        name,
+        slug
+    }
+}

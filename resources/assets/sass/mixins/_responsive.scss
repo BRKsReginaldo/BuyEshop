@@ -1,0 +1,81 @@
+// Mobile media queries
+@mixin mobileResponsive($point) {
+  @if $point == mobileSm {
+    @media (min-width: 400px) {
+      @content;
+    }
+  } @else if $point == mobileMd {
+    @media (min-width: 450px) {
+      @content;
+    }
+  } @else if $point == mobileLg {
+    @media (min-width: 767px) {
+      @content;
+    }
+  } @else if $point == tabletSm {
+    @media (min-width: 840px) {
+      @content;
+    }
+  } @else if $point == tabletMd {
+    @media (min-width: 991px) {
+      @content;
+    }
+  } @else if $point == tabletLg {
+    @media (min-width: 1040px) {
+      @content;
+    }
+  } @else if $point == desktopSm {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $point == desktopMd {
+    @media (min-width: 1300px) {
+      @content;
+    }
+  } @else if $point == desktopLg {
+    @media (min-width: 1400px) {
+      @content;
+    }
+  }
+}
+
+// Desktop media queries
+@mixin desktopResponsive($point) {
+  @if $point == mobileSm {
+    @media (max-width: 399px) {
+      @content;
+    }
+  } @else if $point == mobileMd {
+    @media (max-width: 449px) {
+      @content;
+    }
+  } @else if $point == mobileLg {
+    @media (max-width: 766px) {
+      @content;
+    }
+  } @else if $point == tabletSm {
+    @media (max-width: 839px) {
+      @content;
+    }
+  } @else if $point == tabletMd {
+    @media (max-width: 990px) {
+      @content;
+    }
+  } @else if $point == tabletLg {
+    @media (max-width: 1039px) {
+      @content;
+    }
+  } @else if $point == desktopSm {
+    @media (max-width: 1199px) {
+      @content;
+    }
+  } @else if $point == desktopMd {
+    @media (max-width: 1299px) {
+      @content;
+    }
+  } @else if $point == desktopLg {
+    @media (max-width: 1399px) {
+      @content;
+    }
+  }
+}

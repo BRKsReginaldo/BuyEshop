@@ -3,6 +3,9 @@
 namespace App\Repositories;
 
 
+use App\Contracts\Priceable;
+use App\Product;
+
 abstract class ProductFetcher
 {
     protected $short_description;
@@ -10,6 +13,8 @@ abstract class ProductFetcher
     protected $title;
 
     abstract function get($link);
+
+    abstract function getPrice(Priceable $product);
 
     protected function toArray()
     {

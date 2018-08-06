@@ -16,6 +16,10 @@ class ProductType extends BaseType
     public function fields()
     {
         return [
+            'id' => [
+                'type' => Type::id(),
+                'name' => 'id'
+            ],
             'logo' => [
                 'type' => Type::string(),
                 'name' => 'logo'
@@ -32,6 +36,15 @@ class ProductType extends BaseType
                 'type' => Type::string(),
                 'name' => 'short_description'
             ],
+            'price' => [
+                'type' => Type::string(),
+                'name' => 'price'
+            ]
         ];
+    }
+
+    public function resolvePriceField($root)
+    {
+        return $root->getResolver()->getPrice($root);
     }
 }

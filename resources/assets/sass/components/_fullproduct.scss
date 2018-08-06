@@ -1,0 +1,29 @@
+.full-product {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-product__actions {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.full-product__action {
+  text-decoration: none;
+  background: #aaa;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.full-product__action--success {
+  background: #5aff61;
+}
+
+.full-product__action--error {
+  background: #ff4f3f;
+}

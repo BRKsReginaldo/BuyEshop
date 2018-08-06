@@ -3,7 +3,10 @@
 namespace App\Repositories;
 
 
+use App\Contracts\Priceable;
+use Carbon\Carbon;
 use Goutte\Client;
+use Illuminate\Support\Facades\Cache;
 
 class PolishopFetcher extends ProductFetcher
 {
@@ -26,5 +29,21 @@ class PolishopFetcher extends ProductFetcher
         $this->logo = $image[0] ?? '';
 
         return $this->toArray();
+    }
+
+    function getPrice(Priceable $product)
+    {
+        if (Cache::has($product->getCacheKey(':price'))) {
+            return Cache::get($product->getCacheKey(':price'));
+        }
+
+
+        $client = new Client;
+        $crawler = $client->request('GET', $product->link);
+        $price = $crawler->filterXPath('//meta[@property="product:price:amount"]')->extract(['content']);
+
+        return Cache::remember($product->getCacheKey(':price'),Carbon::now()->addHours(2), function() use($price) {
+            return $price[0] ?? 0;
+        });
     }
 }
